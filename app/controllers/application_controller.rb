@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :set_side
+  
   def after_sign_in_path_for(_resource)
     root_path
   end
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
 
-  # def set_side
-  #   @users = user.all
-  # end
+  def set_side
+    @users = User.all
+  end
 end
