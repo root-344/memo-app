@@ -1,0 +1,36 @@
+  <div class="side">
+    <div class="user-names">出品者様一覧</div>
+    <ul class="side-names">
+      <% @users.each do |user| %>
+        <li class="side-name">           
+        <%= link_to root_path, class: "side-user-name" do %>
+          <%= "#{user.nickname}様" %>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="date-time-box">
+      <div id="date-time"></div>
+    </div>
+    <script type="text/javascript">
+      setInterval('clock()', 500);
+      function clock() {
+        document.getElementById("date-time").innerHTML = showClock();
+      }
+      function showClock() {
+        var now = new Date();
+        var Year = now.getFullYear();
+        var Month = ("0" + (now.getMonth()+1)).slice(-2);
+        var Day = ("0" + now.getDate()).slice(-2);
+        var you = now.getDay(); 
+        var Hour = ("0" + now.getHours()).slice(-2);
+        var Min = ("0" + now.getMinutes()).slice(-2);
+        var Sec = ("0" + now.getSeconds()).slice(-2);
+
+        var youbi = new Array("日","月","火","水","木","金","土");
+
+        var s = Year + "年" + Month + "月" + Day + "日(" + youbi[you] + ")" + Hour + ":" + Min + ":" + Sec;
+        return s;
+      }
+    </script>
+  </div>
