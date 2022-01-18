@@ -1,0 +1,62 @@
+<div class="main-wrapper">
+
+  <%= render "shared/side"%>
+
+  <div class="sell-main">
+    <div class="sell-container">
+      <h2 class="sell-title">商品の情報を入力</h2>
+      <%= form_with model: @post, class: "sell-form", local: true  do |f| %>
+    
+      <%= render 'shared/error', model: f.object %>
+        
+        <div class="img-upload">
+          <div class="weight-bold-text">
+            出品画像
+          </div>
+          <%# <div class="click-upload" id="click-upload">
+            <%= f.file_field :image, id: "post-image" %> %>
+          <%# </div> %>
+        </div>
+        <%# <div id="image-list"></div> %>
+        <%# <% image_tag @post.image, id: "image" if @post.image.present? %> %>
+        <div class="new-posts">
+          <div class="weight-bold-text">
+            商品名
+          </div>
+          <%= f.text_field :title, class:"posts-text", id:"post-title", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        </div>
+        <div class="posts-explain">
+          <div class="weight-bold-text">
+            商品の説明
+          </div>
+          <%= f.text_area :detail, class:"posts-text", id:"post-info", placeholder: "注)カテゴリーで複数種混合を選択した場合は内容を説明欄に記載してください（必須 1,000文字まで)" , rows:"7" , maxlength:"1000" %>
+        </div>
+        <div class="posts-detail">
+          <div class="weight-bold-text">商品の詳細</div>
+          <div class="form">
+            <div class="weight-bold-text">
+              カテゴリー
+              <span class="indispensable">必須</span>
+            </div>
+            <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"post-genre"}) %>
+          </div>
+        </div>
+        <div class="date">
+          <h3 class="f-word">開催日時</h3>
+          <%= f.datetime_field :date, {include_blank: true}%>
+        </div>
+
+            <%# 後で使用する %>
+            <%# <script src="javascript/price.js"></script> %>
+        <div class="post-btn-contents">
+          <div class="post-btn-content">
+            <%= f.submit "投稿する", class:"post-btn" %>
+          </div>
+          <div class="back-btn-content">
+            <%=link_to '戻る', posts_path, class:"back-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
