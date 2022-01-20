@@ -36,7 +36,6 @@
           <div class="form">
             <div class="weight-bold-text">
               カテゴリー
-              <span class="indispensable">必須</span>
             </div>
             <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"post-genre"}) %>
           </div>
