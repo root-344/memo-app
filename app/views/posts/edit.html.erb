@@ -2,10 +2,10 @@
 
   <%= render "shared/side"%>
 
-  <div class="sell-main">
-    <div class="sell-container">
-      <h2 class="sell-title">商品の情報を入力</h2>
-      <%= form_with model: @post, class: "sell-form", local: true  do |f| %>
+  <div class="edit-main">
+    <div class="edit-container">
+      <h2 class="edit-title">商品の情報を入力</h2>
+      <%= form_with model: @post, class: "edit-form", local: true  do |f| %>
     
       <%= render 'shared/error', model: f.object %>
         

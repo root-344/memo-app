@@ -20,23 +20,25 @@ class PostsController < ApplicationController
     end
   end
 
-  # def edit
-  # end
+  def edit
+    @post = Post.find(params[:id])
+  end
 
-  # def update
-  #   # 画像複数枚投稿実装の時使用
-  #   # if params[:item][:image_ids]
-  #   #   params[:item][:image_ids].each do |image_id|
-  #   #     image = @item.images.find(image_id)
-  #   #     image.purge
-  #   #   end
-  #   # end
-  #   if @post.update(post_params)
-  #     redirect_to post_path
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    # 画像複数枚投稿実装の時使用
+    # if params[:item][:image_ids]
+    #   params[:item][:image_ids].each do |image_id|
+    #     image = @item.images.find(image_id)
+    #     image.purge
+    #   end
+    # end
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path
+    else
+      render :edit
+    end
+  end
 
   # def destroy
   #   redirect_to posts_path if @post.destroy
