@@ -40,9 +40,10 @@ class PostsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   redirect_to posts_path if @post.destroy
-  # end
+  def destroy
+    @post = Post.find(params[:id])
+    redirect_to posts_path if @post.destroy
+  end
 
   # def search
   #   @posts = Post.search(params[:keyword])
