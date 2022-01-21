@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show, :search]
+
   def index
     @posts = Post.all
   end
@@ -21,7 +24,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
@@ -32,7 +34,6 @@ class PostsController < ApplicationController
     #     image.purge
     #   end
     # end
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path
     else
@@ -41,13 +42,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     redirect_to posts_path if @post.destroy
   end
 
-  # def search
-  #   @posts = Post.search(params[:keyword])
-  # end
+  def search
+    @posts = Post.search(params[:keyword])
+  end
 
   private
 
@@ -55,11 +55,11 @@ class PostsController < ApplicationController
     params.require(:post).permit(:genre_id, :title, :detail, :date,).merge(user_id: current_user.id)
   end
 
-  # def move_to_index
-  #   redirect_to action: :index unless user_signed_in?
-  # end
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 
-  # def set_item
-  #   @post = Post.find(params[:id])
-  # end
+  def set_item
+    @post = Post.find(params[:id])
+  end
 end
