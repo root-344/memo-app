@@ -25,7 +25,7 @@
           </div>
           <div class="header-down">
             <% if user_signed_in? %>
-              <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: "user-name", id: "name-btn" %>
+              <%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class: "user-name", id: "name-btn" %>
               <%= link_to "ログアウト", destroy_user_session_path, class: "logout", id: "logout-btn", method: :delete %>
               <%= link_to "メモ一覧", posts_path, class: "post-container" %> 
               <%= link_to "投稿", "/posts/new/", class: "new-post" %> 
