@@ -1,0 +1,53 @@
+<div class="main-wrapper">
+
+  <%= render "shared/side"%>
+
+  <div class="user-show-main">
+    <div class="user-show-box">
+      <% if user_signed_in?%>
+        <div class="user-show-status-box">
+          <div class="user-status">
+            <div class="post-img-content">
+              <%# <%= image_tag @image, class:"post-box-img" %> %>
+            </div>
+            <h2 class="user-nickname"> 
+              <%= @nickname %>
+            </h2>
+            <% if @email == current_user.email %>
+              <p class="user-email">
+                <%= @email %>
+              </p>
+              <div class="user-select-btn-container">
+                <div class="user-edit-btn">
+                  <%= link_to "編集", "/users/edit" %>
+                </div> 
+                <div class="user-delete-btn"> 
+                  <%= link_to "退会", user_registration_path, method: :delete %>
+                </div>
+              </div>
+            <% end %> 
+          </div>
+        </div>
+      <% end %>
+      <div class="user-show">
+        <h2 class="main-title"><%= @nickname %>さんの商品一覧</h2>
+        <ul class="user-post-lists">
+          <% @posts.each do |post| %> 
+            <li class="user-post-list">
+              <%= link_to post_path(post.id) do %>
+                <div class="post-img-content">
+                  <%# <%= image_tag post.image, class: "post-images" if post.image.present? %>  %>
+                </div>
+                <div class='post-info'>
+                  <h3 class='post-name'>
+                    <%= "#{post.title}" %>
+                  </h3>
+                </div>
+              <% end %>
+            </li>
+          <% end %> 
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
