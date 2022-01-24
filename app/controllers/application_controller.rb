@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_side
   
   def after_sign_in_path_for(_resource)
-    root_path
+    posts_path
   end
 
   private
