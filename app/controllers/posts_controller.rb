@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index
@@ -7,10 +7,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
     @comments = @post.comments.includes(:user)
-
+    @comment = Comment.new
   end
 
   def new
