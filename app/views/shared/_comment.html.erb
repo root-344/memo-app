@@ -1,15 +1,17 @@
-<div class="comment-stock">
-  <div class="comments-list" id="comments">
+  <div class="comments">
     <h4>＜コメント一覧＞</h4>
-    <% @comments.reverse_each do |comment| %>
-      <p>
-        <strong><%= link_to "#{comment.user.nickname}", "/users/#{comment.user_id}" %>:</strong>
-        <%= comment.text %> 
-      </p>
-      <p>
-        <%= comment.created_at %>
-      </p>
-    <% end %>
-  </div> 
-</div>
-
+    <div id="comments">
+      <% @post.comments.reverse_each do |comment| %>
+        <div class="comment">
+          <p class="user-info">
+            <strong><%= link_to "#{comment.user.nickname}", "/users/#{comment.user_id}" %>:</strong>
+            <%# <%=comment.user.nickname %>
+            <%= comment.text%>
+          </p>
+          <p>
+            <%= comment.created_at %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>

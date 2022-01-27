@@ -33,20 +33,17 @@
       </div>
     </div>
   </div>
-  <div class="comment-box">
+  <div class="comment-form">
     <% if user_signed_in? %>
-      <%= form_with(model: [@post, @comment], id: "cmt-f") do |form| %>
-      <label>
-        <%= form.text_area :text, placeholder: "コメントする", class: "text-f", rows: "6" %>
-      </label>
-      <div class="s-btn">
-        <%= form.submit "コメントする", class: "send" %>
-      </div>
+      <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+        <%= f.text_area :text , class: "comment-text"%>
+        <%= f.submit "コメントをする", class: "comment-submit" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %> 
   </div> 
+
   <%= render "shared/comment" %>
 
 </div>

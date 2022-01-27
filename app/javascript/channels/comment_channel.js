@@ -1,7 +1,11 @@
 import consumer from "./consumer"
 
 if(location.pathname.match(/\/posts\/\d/)){
-  consumer.subscriptions.create("CommentChannel", {
+
+  consumer.subscriptions.create({
+    channel: "CommentChannel",
+    post_id: location.pathname.match(/\d+/)[0]
+  }, {
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -11,12 +15,16 @@ if(location.pathname.match(/\/posts\/\d/)){
     },
 
     received(data) {
-      const html = `<p>${data.user.nickname}:  ${data.content.text}: ${data.date}</p>`;
-      const comments = document.getElementById('comments');
-      comments.insertAdjacentHTML('afterbegin', html);
-      const newComment = document.getElementById('cmt-f');
-      newComment.value='';
+      const html = `
+        <div class="comment">
+          <p class="user-info">${data.user.nickname}: ${data.comment.text}</p>
+          <p>${data.date}</p>
+        </div>`
+      const comments = document.getElementById("comments")
+      comments.insertAdjacentHTML('afterbegin', html)
+      const newComment = document.getElementById("comment-form")
+      newComment.reset();
       // Called when there's incoming data on the websocket for this channel
     }
-  });
+  })
 }
