@@ -12,7 +12,7 @@
           <%# <%= image_tag @post.image, class:"post-box-img" %> %>
         </div>
 
-        <%# <%= render('likes/like',post: @post) %> %>
+        <%= render('likes/like', post: @post) %>
 
         <div class="post-command">
             <% if current_user.id == @post.user_id %>

@@ -1,0 +1,1 @@
+document.getElementById('like-<%= @post.id %>').innerHTML = '<%= escape_javascript(render('likes/like', post: @post)) %>'

@@ -48,6 +48,25 @@
           <% end %> 
         </ul>
       </div>
+      <h2 class="main-title"><%= @nickname %>さんのお気に入り一覧</h2>
+        <ul class="user-post-lists">
+          <% @like_posts.each do |like| %> 
+            <li class="user-post-list">
+              <%= link_to post_path(like.id) do %>
+                <div class="post-img-content">
+                  <%# <%= image_tag post.image, class: "post-images" if post.image.present? %>  %>
+                </div>
+                <div class='post-info'>
+                  <h3 class='post-name'>
+                    <%= "#{like.title}" %>
+                  </h3>
+                </div>
+              <% end %>
+            </li>
+          <% end %> 
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>

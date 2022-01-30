@@ -1,0 +1,13 @@
+          <div id="like-<%= @post.id %>">
+            <% if !user_signed_in? %>
+              <div class="fa fa-heart like-btn"></div>
+            <% elsif current_user.liked_by?(@post) %>
+              <%= link_to post_like_path(@post, @post.likes), class: "like-link", method: :delete, remote: true do %>
+                <div class="fa fa-heart unlike-btn">お気に入り登録を解除</div>
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(@post), class: "like-link", method: :post, remote: true do %>
+                <div class="fa fa-heart like-btn">お気に入り登録</div>
+              <% end %>
+            <% end %>
+          </div>
