@@ -9,16 +9,16 @@
       
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <%# <div class="img-upload">
+        <div class="img-upload">
           <div class="weight-bold-text">
             出品者様イメージ画像
-          </div> %>
-          <%# <div class="click-upload" >
-            <%= f.file_field :image, id: "user-image" %> %>
-          <%# </div>
+          </div>
+          <div class="click-upload" >
+            <%= f.file_field :image, id: "user-image" %>
+          </div>
         </div>
-        <div id="user-image-list"></div> %>
-        <%# <% image_tag @image, id: "user-image-file" if @image.present? %> %>
+        <div id="user-image-list"></div>
+        <% image_tag @image, id: "user-image-file" if @image.present? %>
         <div class="form-control">
           <%= f.label "表示名" %><br />
           <%= f.text_field :nickname, class: "t-form", maxlength: "10" %>

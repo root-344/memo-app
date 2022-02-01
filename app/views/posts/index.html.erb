@@ -9,7 +9,7 @@
         <li class="list">
           <%= link_to post_path(post.id) do %>
             <div class="post-img-content">
-              <%# <%= image_tag post.image, class: "post-images" if post.image.present? %> %>
+              <%= image_tag post.image, class: "post-images" if post.image.present? %>
             </div>
             <div class='post-info'>
               <h3 class='post-title'>

@@ -8,7 +8,7 @@
         <div class="user-show-status-box">
           <div class="user-status">
             <div class="post-img-content">
-              <%# <%= image_tag @image, class:"post-box-img" %> %>
+              <%= image_tag @image, class:"post-box-img" %>
             </div>
             <h2 class="user-nickname"> 
               <%= @nickname %>
@@ -36,7 +36,7 @@
             <li class="user-post-list">
               <%= link_to post_path(post.id) do %>
                 <div class="post-img-content">
-                  <%# <%= image_tag post.image, class: "post-images" if post.image.present? %>  %>
+                  <%= image_tag post.image, class: "post-images" if post.image.present? %> 
                 </div>
                 <div class='post-info'>
                   <h3 class='post-name'>
@@ -54,7 +54,7 @@
             <li class="user-post-list">
               <%= link_to post_path(like.id) do %>
                 <div class="post-img-content">
-                  <%# <%= image_tag post.image, class: "post-images" if post.image.present? %>  %>
+                  <%= image_tag post.image, class: "post-images" if post.image.present? %> 
                 </div>
                 <div class='post-info'>
                   <h3 class='post-name'>
