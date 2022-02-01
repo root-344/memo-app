@@ -13,12 +13,12 @@
           <div class="weight-bold-text">
             出品画像
           </div>
-          <%# <div class="click-upload" id="click-upload">
-            <%= f.file_field :image, id: "post-image" %> %>
-          <%# </div> %>
+          <div class="click-upload" id="click-upload">
+            <%= f.file_field :image, id: "post-image" %>
+          </div>
         </div>
-        <%# <div id="image-list"></div> %>
-        <%# <% image_tag @post.image, id: "image" if @post.image.present? %> %>
+        <div id="image-list"></div>
+        <% image_tag @post.image, id: "image" if @post.image.present? %>
         <div class="new-posts">
           <div class="weight-bold-text">
             商品名

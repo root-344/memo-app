@@ -9,16 +9,16 @@
 
         <%= render "devise/shared/error_messages", resource: resource %>
         
-        <%# <div class="img-upload">
+        <div class="img-upload">
           <div class="weight-bold-text">
             イメージ画像
           </div>
           <div class="click-upload">
-            <%= f.file_field :image, id: "user-edit-image" %> %>
-          <%# </div>
+            <%= f.file_field :image, id: "user-edit-image" %>
+          </div>
         </div>
-        <div id="user-edit-image-list"></div> %>
-        <%# <% image_tag @image, id: "user-edit-image-file" if @image.present? %> %>
+        <div id="user-edit-image-list"></div>
+        <% image_tag @image, id: "user-edit-image-file" if @image.present? %>
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

@@ -9,7 +9,7 @@
           <%= "#{@post.title}" %>
         </h2>
         <div class="post-img-content">
-          <%# <%= image_tag @post.image, class:"post-box-img" %> %>
+          <%= image_tag @post.image, class:"post-box-img" %>
         </div>
 
         <%= render('likes/like', post: @post) %>
