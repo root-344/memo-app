@@ -15,11 +15,13 @@
         <%= render('likes/like', post: @post) %>
 
         <div class="post-command">
+          <% if user_signed_in? %>
             <% if current_user.id == @post.user_id %>
               <%= link_to "編集", edit_post_path(@post.id), method: :get, class: "post-edit-btn" %>
               <p class="or-text">or</p>
               <%= link_to "削除", post_path(@post.id), method: :delete, class: "post-destroy-btn" %>
             <% end %>
+          <% end %>
         </div>
         <div class="post-description-box">
           <span><%= "#{@post.detail}" %></span>
